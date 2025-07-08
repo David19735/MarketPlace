@@ -1,0 +1,50 @@
+.contenedor{
+    width: 100%;
+    border: solid 2px rgba(0, 0, 0, 0.5);
+    min-height: 25vh;
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.imagenes{
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.imagen{
+    width: 12rem;
+    height: 20vh;
+    object-position: center;
+    object-fit: cover;
+}
+
+
+@media (max-width:1200px){
+
+    .contenedor{
+        margin: 0;
+    }
+    .imagenes{
+        gap: 2rem;
+    }
+    .imagen{
+        width: 13rem;
+    }
+}
+
+@media (max-width:562px){
+    .contenedor p{
+        font-family: 0.8rem;
+    }
+
+    .imagenes{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .imagen{
+        width: 18rem;
+    }
+}

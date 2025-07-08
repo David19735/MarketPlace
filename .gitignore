@@ -1,0 +1,14 @@
+# Ignorar node_modules del cliente y servidor
+/client/node_modules/
+/server/node_modules/
+
+# Ignorar logs y otros archivos temporales
+*.log
+.env
+.DS_Store
+
+# Compilaciones temporales (opcional)
+dist/
+build/
+.next/
+out/

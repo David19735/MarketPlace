@@ -1,0 +1,110 @@
+.container{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#contenedor{
+    min-height: 50vh;
+}
+
+.correcto{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+}
+
+.correcto h4{
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.correcto span{
+font-size: 2rem;
+    font-weight: 400;
+}
+
+.correcto h3{
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.correcto p{
+    width: 50%;
+}
+
+.correcto button{
+    width: 20%;
+    height: 2.5rem;
+    color: white;
+    border: none;
+    background: #1077A3;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: all ease 0.3s;
+}
+
+.correcto button:hover{
+    background: #08374C;
+}
+
+
+@media (max-width:1200px){
+
+    #contenedor{
+        min-height: 70vh;
+    }
+
+    .correcto{
+        margin-top: 5rem;
+    }
+
+    .correcto h3{
+        font-size: 2rem;
+    }
+
+    .correcto p{
+        width: 70%;
+        font-size: 1.5rem;
+    }
+
+    .correcto button{
+        width: 50%;
+        height: 3.5rem;
+        font-size: 1.5rem;
+    }
+}
+
+
+@media (max-width:562px){
+    #contenedor{
+        min-height: 100vh;
+    }
+    .correcto{
+        margin-top: 5rem;
+        margin-bottom: 2rem;
+        gap: 3rem;
+
+    }
+
+
+    .correcto p{
+        width: 100%;
+        font-size: 1.2rem
+    }
+
+    .correcto h3{
+        font-size: 1.5rem;
+    }
+
+    .correcto button{
+        width: 100%;
+    }
+    
+}

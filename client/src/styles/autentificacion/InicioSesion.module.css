@@ -1,0 +1,130 @@
+.contenedor{
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#contenedor__formulario{
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+#contenedor__formulario h3{
+    font-weight: 300;
+}
+
+#contenedor__formulario span{
+    font-weight: 500;
+}
+
+#contenedor__formulario h5{
+    font-size: 1.1rem;
+}
+
+.contenedor__input{
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    position: relative;
+}
+
+.contenedor__input i{
+    position: absolute;
+    right: 0.5rem;
+    bottom: 0;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.contenedor__input label{
+    font-size: 0.7rem;
+}
+
+.contenedor__input input{
+    width: 100%;
+    height: 2.2rem;
+    outline: none;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: solid 2px rgba(0, 0, 0, 0.5);
+    padding-right: 2rem;
+}
+
+.enlaces{
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-around;
+    width: 35%;
+}
+
+.enlaces a{
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: all ease 0.4s;
+}
+
+.enlaces a:hover{
+    color: blueviolet;
+}
+
+.contenedor__Botones{
+    width: 20%;
+    height: 2.2rem;
+}
+
+.contenedor__Botones button{
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: rgb(8, 8, 129);
+    color: white;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.contenedor__Botones button:hover{
+    background: rgb(10, 10, 116);
+}
+
+@media (max-width:1200px){
+    .contenedor__input{
+        width: 60%;
+        gap: 0.2rem;
+    }
+    .contenedor__Botones{
+        width: 40%;
+        height: 2.5rem;
+    }
+    .enlaces{
+        width: 60%;
+    }
+}
+
+@media (max-width:562px) {
+    
+    #contenedor__formulario{
+        min-height: 100vh;
+        gap: 1rem;
+    }
+    .contenedor__input{
+        width: 100%;
+        gap: 0.2rem;
+    }
+    .contenedor__input input{
+        height: 2.2rem;
+    }
+    .contenedor__Botones{
+        width: 80%;
+    }
+    .enlaces{
+        width: 100%;
+    }
+}
+

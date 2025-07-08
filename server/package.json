@@ -1,0 +1,37 @@
+{
+  "type": "module",
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Backend para página de marketPlace",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon index.js",
+    "db:importar":"node ./seed/seeder.js -i",
+    "db:eliminar":"node ./seed/seeder.js -e"
+  },
+  "keywords": [
+    "NodeJs",
+    "NextJs",
+    "Mysql",
+    "ORM",
+    "NodeMailer",
+    "Bcrypt"
+  ],
+  "author": "David Pérez González",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "csrf": "^3.1.0",
+    "csurf": "^1.11.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.14.1",
+    "nodemailer": "^7.0.3",
+    "nodemon": "^3.1.10",
+    "sequelize": "^6.37.7"
+  }
+}

@@ -7,7 +7,7 @@ import db from '../config/db.js';
 import {exit} from 'node:process'
 import sequelize from '../config/db.js';
 
-const {Categoria,Precio,Trato,Usuario,Producto,Imagen} =modelos;
+const {Categoria,Precio,Trato,Usuario,Venta,Imagen} =modelos;
 
 
 const importarDatos=async()=>{

@@ -1,10 +1,13 @@
 import express from 'express';
 import autentificacionRoutes from './routes/autentificacionRoutes.js';
 import postRoutes from './routes/postRoutes.js';
+import inicioRoutes from './routes/inicioRoutes.js'
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import csrf from 'csurf';
 import db from './config/db.js';
+import {exit} from 'node:process'
+
 
 //Iniciar la app
 const app=express();
@@ -13,10 +16,10 @@ const port=4000;
 
 try {
     await db.authenticate();
-    db.sync()
+    await db.sync();
     console.log("Conexión correcta a la base de datos");
 } catch (error) {
-    console.log(error);
+    console.log(error)
 }
 
 
@@ -42,6 +45,7 @@ app.use(csrfProtection);
 
 app.use('/autentificacion',autentificacionRoutes);
 app.use('/post',postRoutes);
+app.use('/inicio',inicioRoutes);
 
 app.listen(port,()=>{
     console.log("Servidor funcionando en el puerto "+port);

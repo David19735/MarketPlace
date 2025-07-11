@@ -52,7 +52,7 @@ export default function MapaLeafletClient() {
         </MapContainer>
       </div>
       <p className={style.domicilio}>{address}</p>
-      <input type="hidden" name="calle" value={address} />
+      <input type="hidden" name="calle" value={address} id="calle"/>
       <input type="hidden" name="lat" value={position[0]} />
       <input type="hidden" name="lng" value={position[1]} />
     </>

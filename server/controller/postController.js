@@ -11,14 +11,23 @@ const Post=async(req,res)=>{
             Precio.findAll()
         ])  
 
-         return res.json({categorias,precios,tratos})
+         return res.json({categorias,precios,tratos,csrfToken:req.csrfToken()})
     } catch (error) {
         console.log(error);
     }
 
 }
 
+const FormularioPost=async(req,res)=>{
+
+    const {nombre,categoriaId,precioId,tratoId,descripcion,domicilio,imagenes}=req.body;
+    console.log(nombre,categoriaId,precioId,tratoId,descripcion,domicilio,imagenes);
+
+    return res.json({msg:'Contectando con backend'})
+}
+
 
 export {
-    Post
+    Post,
+    FormularioPost
 }

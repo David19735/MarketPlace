@@ -2,14 +2,14 @@ import Categoria from './Categoria.js';
 import Precio from './Precio.js';
 import Trato from './Trato.js';
 import Usuario from './Usuario.js';
-import Producto from './Producto.js';
 import Imagen from './Imagen.js';
+import Venta from './Venta.js';
 
-Producto.belongsTo(Usuario,{foreignKey:'usuarioId'});
-Producto.belongsTo(Trato,{foreignKey:'tratoId'});
-Producto.belongsTo(Precio,{foreignKey:'precioId'});
-Producto.belongsTo(Categoria,{foreignKey:'categoriaId'});
-Producto.belongsTo(Imagen,{foreignKey:'imagenId'})
+Venta.belongsTo(Usuario,{foreignKey:'usuarioId'});
+Venta.belongsTo(Trato,{foreignKey:'tratoId'});
+Venta.belongsTo(Precio,{foreignKey:'precioId'});
+Venta.belongsTo(Categoria,{foreignKey:'categoriaId'});
+Venta.belongsTo(Imagen,{foreignKey:'imagenId'})
 
 
 export{
@@ -17,6 +17,6 @@ export{
     Precio,
     Trato,
     Usuario,
-    Producto,
+    Venta,
     Imagen
 }

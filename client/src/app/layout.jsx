@@ -3,6 +3,7 @@ import Bootstrap from "@/components/Bootstrap";
 import Aos from "@/components/Aos";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import {UserProvider} from '@/contextos/useContext'
 
 export const metadata = {
   title: "MarketPlace",
@@ -13,9 +14,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        <UserProvider>
         {children}
         <Bootstrap/>
         <Aos/>
+        </UserProvider>
       </body>
     </html>
   );

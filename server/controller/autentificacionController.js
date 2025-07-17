@@ -179,6 +179,23 @@ const FormularioCambiarPassword=async(req,res)=>{
    
 }
 
+const cerrarSesion=(req,res)=>{
+
+    return res.json({csrfToken:req.csrfToken()})
+}
+
+const BotonCerrarSesion=(req,res)=>{
+    res.cookie('token', '', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict',
+    path: '/',           // IMPORTANTE: debe ser el mismo path usado al guardar el token
+    maxAge: 0,           // Esto elimina la cookie
+  });
+
+  res.json({ mensaje: 'Sesión cerrada correctamente' });
+}
+
 export{
     Registro,
     IniciarSesion,
@@ -188,5 +205,7 @@ export{
     FormularioOlvidePassword,
     CambiarPassword,
     FormularioCambiarPassword,
-    FormularioIniciarSesion
+    FormularioIniciarSesion,
+    cerrarSesion,
+    BotonCerrarSesion
 }

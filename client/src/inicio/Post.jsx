@@ -6,6 +6,7 @@ import DropzoneImagenes from '@/components/Dropzone';
 import { v4 as uuidv4 } from 'uuid';
 import { useUsuario } from '@/contextos/useContext';
 import MensajeAlerta from '@/components/MensajeAlerta';
+import Header from './Header';
 
 
 function Post() {
@@ -63,13 +64,13 @@ function Post() {
       case 'nombre':setNombre(e.target.value);
       break;
 
-      case 'categoria':setCategoriaId(e.target.value)
+      case 'categoria':setCategoriaId(parseInt(e.target.value))
       break;
 
-      case 'precio':setPrecioId(e.target.value);
+      case 'precio':setPrecioId(parseInt(e.target.value));
       break;
 
-      case 'trato':setTratoId(e.target.value);
+      case 'trato':setTratoId(parseInt(e.target.value));
       break;
 
       case 'descripcion':setDescripcion(e.target.value);
@@ -82,6 +83,10 @@ function Post() {
 
   const handleSubmit=async(e)=>{
     e.preventDefault();
+    //Obteniendo al usuario
+    const {id:usuarioId}=usuario;
+
+  
 
     if(!usuario){
       setEstadoAlerta(true);
@@ -95,7 +100,7 @@ function Post() {
       formData.append(`imagen${index + 1}`, img);
     });
 
-   setDomicilio(document.querySelector('#calle').value);
+   const dom=document.querySelector('#calle').value;
    
    const paths=imagenes.map(imagen=>imagen.path);
 
@@ -112,8 +117,8 @@ function Post() {
     })
 
     
-   const datos={nombre,categoriaId,precioId,tratoId,descripcion,domicilio:domicilio,imagenes:datosImagenes}
-    
+   const datos={usuarioId,categoriaId,precioId,tratoId,nombre,descripcion,domicilio:dom,imagenes:datosImagenes}
+
 
     const res=await fetch('http://localhost:4000/post/publicar',{
       method:'POST',
@@ -130,6 +135,8 @@ function Post() {
 
 
   return (
+    <>
+    <Header/>
     <div className={style.contenedor}>
         <form action="" className={style.formulario} onSubmit={handleSubmit}>
             <h3>Publica tu producto</h3>
@@ -202,6 +209,7 @@ function Post() {
             />
           }
     </div>
+    </>
   )
 }
 

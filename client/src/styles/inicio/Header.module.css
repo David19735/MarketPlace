@@ -1,0 +1,207 @@
+.header{
+    width: 100%;
+    min-height: 12vh;
+    background: url('../../../public/6150433.jpg');
+    background-position:center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 3rem;
+    position: relative;
+}
+
+.primero{
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.primero a{
+  text-decoration: none;
+}
+
+.primero h3{
+  color: white;
+}
+
+.primero span{
+  color: white;
+  font-weight: 300;
+}
+
+.segundo{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.enlaces{
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: transparent;
+}
+
+.enlaces a{
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: all ease 0.3s;
+}
+
+.enlaces a:hover{
+  color: rgb(35, 174, 199);
+}
+
+.boton{
+width: 25%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.boton button{
+  width: 95%;
+  height: 75%;
+  border: none;
+  background: rgba(59, 59, 143, 0.123);
+  color: white;
+  letter-spacing: 1px;
+  font-weight: 700;
+  transition: all ease 0.3s;
+}
+
+.boton button:hover{
+    background: rgba(30, 30, 117, 0.39);
+}
+
+.botonResponsive{
+  width: 5%;
+  border: solid 1px white;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.menuResponsive{
+  width: 100%;
+  height: 89vh;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(100vw);
+  transition-duration: 0.7s;
+}
+
+.menuResponsive__active{
+    width: 100%;
+    height: 89vh;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: rgba(0,0,0,0.95);
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0);
+    transition-duration: 0.7s;
+}
+
+/*Responsive*/
+
+@media(max-width:1200px){
+
+  .header{
+    min-height: 12vh;
+  }
+
+.primero h3{
+  font-size: 1.2rem;
+}
+
+.segundo{
+  width: 75%;
+}
+
+.enlaces a{
+  font-size: 0.7rem;
+}
+
+.boton button{
+  height: 70%;
+}
+
+}
+
+@media(max-width:790px){
+  
+  .segundo{
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .botonResponsive{
+    opacity: 1;
+    width: 15%;
+    top: 15%;
+    right: 5%;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    pointer-events: all;
+  }
+  .botonResponsive i{
+    color: white;
+    font-size: 2.5rem;
+    cursor: pointer;
+  }
+
+  .enlacesResponsivos{
+    width: 90%;
+    margin: 0 auto;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .enlacesResponsivos a{
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.336);
+    width: 100%;
+    padding-bottom: 0.3rem;
+    text-align: center;
+    font-size: 1.2rem;
+    color: white;
+    letter-spacing: 1px;
+  }
+
+  .botonNavResponsive{
+    width: 90%;
+    margin: 0 auto;
+    min-height: 8vh;
+  }
+
+  .botonNavResponsive button{
+    width: 100%;
+    height: 8vh;
+    border: none;
+    background: rgba(12, 12, 95, 0.616);
+    color: white;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+
+}

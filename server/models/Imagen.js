@@ -1,20 +1,19 @@
-import {DataTypes} from 'sequelize';
+import { DataTypes } from 'sequelize';
 import db from '../config/db.js';
 
-const Imagen=db.define('imagenes',{
-    imagen1:{
-        type:DataTypes.STRING,
-        allowNull:false
+const Imagen = db.define('imagenes', {
+    nombre: {
+        type: DataTypes.STRING,
+        allowNull: false
     },
-    imagen2:{
-        type:DataTypes.STRING,
-        allowNull:false
-    },
-    imagen3:{
-        type:DataTypes.STRING,
-        allowNull:false
+    productoId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'productos',
+            key: 'id'
+        }
     }
-})
+});
 
-
-export default Imagen
+export default Imagen;

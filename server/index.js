@@ -7,12 +7,21 @@ import cors from 'cors';
 import csrf from 'csurf';
 import db from './config/db.js';
 import {exit} from 'node:process'
+import fs from 'fs';
+import path from 'path';
 
 
 //Iniciar la app
 const app=express();
 const port=4000;
 
+const uploadDir = path.join(process.cwd(), 'uploads');
+
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+}
+
+app.use('/uploads', express.static('uploads'));
 
 try {
     await db.authenticate();

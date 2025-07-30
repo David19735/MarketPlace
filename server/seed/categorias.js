@@ -4,7 +4,9 @@ const categorias=[
     {nombre:'hogares'},
     {nombre:'vehiculos'},
     {nombre:'vestimenta'},
-    {nombre:'calzado'}
+    {nombre:'calzado'},
+    {nombre:'computadoras'},
+    {nombre:'periféricos'}
 ]
 
 export default categorias;

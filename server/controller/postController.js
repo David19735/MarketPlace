@@ -24,41 +24,47 @@ const Post=async(req,res)=>{
 
 const FormularioPost=async(req,res)=>{
 
-    const {usuarioId,nombre,categoriaId,precioId,tratoId,descripcion,domicilio,imagenes}=req.body;
-    const {imagen1,imagen2,imagen3}=imagenes;
+   try {
+    const {
+      usuarioId,
+      categoriaId,
+      precioId,
+      tratoId,
+      nombre,
+      descripcion,
+      domicilio,
+      lat,
+      lng,
+      publicado
+    } = req.body;
 
-    console.log(usuarioId,nombre,categoriaId,precioId,tratoId,descripcion,domicilio,imagenes);
-
-        await Imagen.create({
-        imagen1,
-        imagen2,
-        imagen3
+    const nuevoProducto=await Producto.create({
+      usuarioId,
+      categoriaId,
+      precioId,
+      tratoId,
+      nombre,
+      descripcion,
+      domicilio,
+      lat,
+      lng,
+      publicado
     })
 
-    const imagenuuid=imagen1.substring(imagen1.indexOf('./'));
-    const filaImagen=await Imagen.findOne({
-        where:{
-            imagen1:{
-                [Op.like]:imagenuuid
-            }
-        }
-    })
+    if (req.files && req.files.length > 0) {
+      const imagenes = req.files.map(file => ({
+        nombre: file.filename,
+        productoId: nuevoProducto.id
+      }));
 
-    const {id:imagenId}=filaImagen;
+      await Imagen.bulkCreate(imagenes);
+    }
 
-    const producto=await Producto.create({
-        nombre,
-        descripcion,
-        domicilio,
-        categoriaId,
-        precioId,
-        tratoId,
-        usuarioId,
-        imagenId:parseInt(imagenId)
-    })
-
-
-    return res.json({msg:'Contectando con backend'})
+    res.status(201).json({ msg: 'Producto creado con imágenes', producto: nuevoProducto });
+   } catch (error) {
+    console.log(error);
+    res.status(500).json({ msg: 'Error al crear producto' });
+   }
 }
 
 

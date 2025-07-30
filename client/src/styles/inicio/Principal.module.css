@@ -1,0 +1,125 @@
+.cards{
+    width: 80%;
+    margin: 3rem auto;
+    min-height: 60vh;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 1.5rem;
+}
+
+.card{
+    max-height: 60vh;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: -1px 0px 12px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -1px 0px 12px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: -1px 0px 12px 0px rgba(0,0,0,0.75);
+    padding: 1rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card:hover{
+    transform: translateY(-0.2rem);
+    transition-duration: 0.3s;
+}
+
+.imagen{
+    width: 100%;
+    margin: 0 auto;
+    height: 8rem;
+}
+
+.imagen img{
+    width: 100%;
+    height: 8rem;
+    object-fit: cover;
+    object-position: center;
+}
+
+.card h4{
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.card p{
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.card button{
+    width: 100%;
+    border: none;
+    height: 2.2rem;
+    background: rgb(87, 17, 119);;
+    color: white;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.informativo{
+    min-height: 50vh;
+    width: 80%;
+    margin: 0 auto; 
+    margin-bottom: 2rem;
+    display: flex;
+}
+
+.informativo__informacion{
+    width: 50%;
+    height: 50vh;
+}
+
+.informativo__informacion h4{
+    font-size: 1.5rem;
+}
+
+.informativo__informacion h5{
+    font-size: 1.1rem;
+    margin: 0.8rem 0;
+}
+
+.informativo__informacion li{
+    font-size: 0.9rem;
+    margin: 0.2rem 0;
+}
+
+.informativo__informacion a{
+    text-decoration: none;
+    color: blue;
+    font-weight: 600;
+}
+
+.informativo__informacion a:hover{
+    color: rgb(3, 3, 43);
+}
+
+.informativo__imagen{
+    width: 50%;
+    height: 50vh;
+}
+
+.informativo__imagen img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media (max-width:1200px){
+    .cards{
+        grid-template-columns: repeat(2,1fr);
+    }    
+
+    .card h4{
+        margin: 0.5rem 0;
+    }
+}
+
+@media (max-width:562px){
+    .cards{
+        grid-template-columns: repeat(1,1fr);
+    }
+}

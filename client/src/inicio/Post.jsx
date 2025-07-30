@@ -95,42 +95,48 @@ function Post() {
       return
     }
 
-    const formData = new FormData();
-    imagenes.forEach((img, index) => {
-      formData.append(`imagen${index + 1}`, img);
-    });
 
    const dom=document.querySelector('#calle').value;
-   
-   const paths=imagenes.map(imagen=>imagen.path);
+   const lat=document.querySelector('#lat').value;
+   const lng=document.querySelector('#lng').value;
+   const publicado=true;
 
-    const newPaths=paths.map(path=>{
-      const extension=path.substring(path.lastIndexOf('.'));
-      const newFileName=uuidv4()+extension;
-      return `./${newFileName}`
-    })
+    const formData = new FormData();
+  // Agregar imágenes (todas con el mismo nombre 'imagenes')
+  imagenes.forEach((img) => {
+    formData.append('imagenes', img);
+    });
 
-    const datosImagenes={}
+    formData.append('usuarioId', usuarioId);
+    formData.append('nombre', nombre);
+    formData.append('descripcion', descripcion);
+    formData.append('domicilio', dom);
+    formData.append('categoriaId', categoriaId);
+    formData.append('precioId', precioId);
+    formData.append('tratoId', tratoId);
+    formData.append('lat', lat);
+    formData.append('lng', lng);
+    formData.append('publicado', publicado);   
 
-    newPaths.forEach((imagen,index)=>{
-      datosImagenes[`imagen${index+1}`]=imagen;
-    })
+    console.log(formData);
+  
+  try {
+      const res = await fetch('http://localhost:4000/post/publicar', {
+      method: 'POST',
+      body: formData,
+      credentials: 'include',
+      headers: {
+        'X-CSRF-Token': csrfToken
+      }
+    });
 
-    
-   const datos={usuarioId,categoriaId,precioId,tratoId,nombre,descripcion,domicilio:dom,imagenes:datosImagenes}
-
-
-    const res=await fetch('http://localhost:4000/post/publicar',{
-      method:'POST',
-      headers:{
-        'Content-type':'application/json',
-        'X-CSRF-Token':csrfToken
-      },
-      body:JSON.stringify(datos),
-      credentials:'include'
-    })
-    const data=await res.json();
+    const data = await res.json();
     console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+
+   
   }
 
 
@@ -215,3 +221,6 @@ function Post() {
 
 export default Post
 //nombre,precio,categoria,descripcion,domicilio
+/*
+Se vende teclado gamer para que puedas jugar fortnite o warzone, también es perfecto para tu día a día, o bien, si eres programador.
+*/

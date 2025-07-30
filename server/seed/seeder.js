@@ -2,12 +2,11 @@ import * as modelos from '../models/index.js';
 import categorias from './categorias.js';
 import precios from './precios.js';
 import tratos from './tratos.js';
-import imagenes from './imagenes.js';
 import db from '../config/db.js';
 import {exit} from 'node:process'
 import sequelize from '../config/db.js';
 
-const {Categoria,Precio,Trato,Usuario,Venta,Imagen} =modelos;
+const {Categoria,Precio,Trato} =modelos;
 
 
 const importarDatos=async()=>{
@@ -21,7 +20,6 @@ const importarDatos=async()=>{
         await Categoria.bulkCreate(categorias);
         await Precio.bulkCreate(precios);
         await Trato.bulkCreate(tratos);
-        await Imagen.bulkCreate(imagenes);
         console.log("Datos importados correctamente");
         exit(0);
 

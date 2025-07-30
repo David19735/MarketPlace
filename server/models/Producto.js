@@ -42,17 +42,21 @@ const Producto=db.define('productos',{
         type:DataTypes.INTEGER,
         allowNull:false,
         references:{
-            model:'usuario',
+            model:'usuarios',
             key:'id'
         }
     },
-    imagenId:{
-        type:DataTypes.INTEGER,
-        allowNull:false,
-        references:{
-         model:'imagenes',
-         key:'id'   
-        }
+    lat:{
+        type:DataTypes.STRING,
+        allowNull:false
+    }
+    ,lng:{
+        type:DataTypes.STRING,
+        allowNull:false
+    },
+    publicado:{
+        type:DataTypes.BOOLEAN,
+        allowNull:false
     }
 })
 

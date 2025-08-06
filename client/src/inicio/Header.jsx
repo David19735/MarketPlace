@@ -12,6 +12,7 @@ const [csrfToken,setCsrfToken]=useState('');
 const [menuActivo,setMenuActivo]=useState(false);
 const router=useRouter();
 
+const id = usuario?.id;  
 
 useEffect(()=>{
   const loadToken=async()=>{
@@ -59,7 +60,7 @@ const sesion=async()=>{
         <div className={style.segundo}>
           <div className={style.enlaces}>
             <Link href={'/registro'}>Registro</Link>
-            <Link href={'/mensajes'}>Mensajes</Link>
+            <Link href={`/mensajes${usuario?.id ? `/${usuario.id}` : ''}`}>Mensajes</Link>
             <Link href={'/post'}>Publicar</Link>
             <Link href={'/perfil'}>Mis propiedades</Link>
           </div>

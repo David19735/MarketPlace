@@ -17,13 +17,9 @@ export default function Carrusel() {
     modules={[Navigation]}
     navigation={true}
      >
-      <SwiperSlide className={style.contenedor_imagen}><img src="/principales/xbox.jpg" /></SwiperSlide>
-      <SwiperSlide className={style.contenedor_imagen}><img src="/principales/computadora.jpg" /></SwiperSlide>
-      <SwiperSlide className={style.contenedor_imagen}><img src="/principales/consolas.jpg" /></SwiperSlide>
-      <SwiperSlide className={style.contenedor_imagen}><img src="/principales/tenis.jpg" /></SwiperSlide>  
-      <SwiperSlide className={style.contenedor_imagen}><img src="/principales/futbol.jpg" /></SwiperSlide>
-      <SwiperSlide className={style.contenedor_imagen}><img src="/principales/iphone.jpg" /></SwiperSlide>
-
+      <SwiperSlide className={style.contendorImg}>
+        <img src="" />
+      </SwiperSlide>
     </Swiper>
   );
 }

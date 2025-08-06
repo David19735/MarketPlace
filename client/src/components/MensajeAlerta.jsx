@@ -21,7 +21,6 @@ function MensajeAlerta({estadoAlerta,setEstadoAlerta,mensajes,tipo}) {
     }
   }
 
-  console.log(tipo);
 
   return (
     <ContenedorAlerta>

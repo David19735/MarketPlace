@@ -2,6 +2,8 @@ import express from 'express';
 import autentificacionRoutes from './routes/autentificacionRoutes.js';
 import postRoutes from './routes/postRoutes.js';
 import inicioRoutes from './routes/inicioRoutes.js'
+import publicacionesRoutes from './routes/publicacionesRoutes.js';
+import mensajesRoutes from './routes/mensajesRoutes.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import csrf from 'csurf';
@@ -55,6 +57,8 @@ app.use(csrfProtection);
 app.use('/autentificacion',autentificacionRoutes);
 app.use('/post',postRoutes);
 app.use('/inicio',inicioRoutes);
+app.use('/publicaciones',publicacionesRoutes);
+app.use('/mensajes',mensajesRoutes);
 
 app.listen(port,()=>{
     console.log("Servidor funcionando en el puerto "+port);

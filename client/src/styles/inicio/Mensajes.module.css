@@ -1,0 +1,6 @@
+.contenedor{
+    width: 70%;
+    min-height: 90vh;
+    border: solid 1px red;
+    margin: 0 auto;
+}

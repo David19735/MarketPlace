@@ -38,7 +38,7 @@ function Principal() {
             </div>  
             <h4>Todos los productos</h4>
             <p>Encuentra en este apartado cualquier producto que sea de tu importancia sin filtro algúno</p>
-            <button>Ver Más</button>
+            <button><Link href={'/publicaciones'}>Ver Más</Link></button>
         </div>
     </div>
 

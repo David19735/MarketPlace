@@ -1,30 +1,16 @@
 .carrusel{
     width: 100%;
-    max-height: 90vh;
+    min-height: 50vh;
 }
 
-.contenedor_imagen{
+.contendorImg{
     width: 100%;
-    max-height: 90vh;
+    min-height: 50vh;
 }
 
-.contenedor_imagen img{
+.contendorImg img{
     width: 100%;
-    min-height: 90vh;
+    min-height: 50vh;
     object-fit: cover;
     object-position: center;
-}
-
-
-@media(max-width:1100px){
-    .carrusel{
-        max-height: 50vh;
-    }
-    .contenedor_imagen{
-        max-height: 50vh;
-    }
-    .contenedor_imagen img{
-        max-height: 50vh;
-        object-position: center;
-    }
 }

@@ -21,6 +21,14 @@ const Mensaje=db.define('mensajes',{
             model:'usuarios',
             key:'id'
         }
+    },
+    productoId:{
+         type:DataTypes.INTEGER,
+        allowNull:false,
+        references:{
+            model:'productos',
+            key:'id'
+        }
     }
 
 })

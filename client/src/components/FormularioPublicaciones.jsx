@@ -15,6 +15,7 @@ import { useUsuario } from '@/contextos/useContext';
 function FormularioPublicaciones({producto,imagenes,categorias,precios,tratos,csrfToken}) {
       const [mensajes,setMensajes]=useState([])
       const [destinatarioId,setDestinatarioId]=useState();
+      const [productoId,setProductoId]=useState();
       const [mensaje,setMensaje]=useState('');
       const [tipo,setTipo]=useState('');
       const [estadoAlerta,setEstadoAlerta]=useState(false);
@@ -22,9 +23,10 @@ function FormularioPublicaciones({producto,imagenes,categorias,precios,tratos,cs
       //Usuario
       const {usuario}=useUsuario();
 
-  const verificarUsuario=(usuarioId)=>{
+  const verificarUsuario=(usuarioId,id)=>{
 
-      setDestinatarioId(usuarioId)
+      setDestinatarioId(usuarioId)  
+      setProductoId(id);
 
       if(usuarioId===usuario.id){
         setEstadoAlerta(true);
@@ -54,7 +56,7 @@ function FormularioPublicaciones({producto,imagenes,categorias,precios,tratos,cs
     }
 
      verificarUsuario();
-    const datos={mensaje,usuarioId:usuario.id,destinatarioId}
+    const datos={mensaje,usuarioId:usuario.id,destinatarioId,productoId} 
 
     if(usuario.id!==destinatarioId){
       
@@ -146,7 +148,7 @@ function FormularioPublicaciones({producto,imagenes,categorias,precios,tratos,cs
                         <textarea name="" id="" placeholder='Envía un mensaje al creador del post' value={mensaje} onChange={(e)=>{setMensaje(e.target.value)}}></textarea>
                       <button
                       type='submit'
-                      onClick={()=>{verificarUsuario(producto.usuarioId)}}
+                      onClick={()=>{verificarUsuario(producto.usuarioId,producto.id)}}
                       >Enviar</button>
                       </form>
                 </div>

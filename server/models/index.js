@@ -42,6 +42,19 @@ Mensaje.belongsTo(Usuario, {
   as: 'destinatario',
 });
 
+  //Relación de mensajes y productos 
+
+  // Producto.js
+Producto.hasMany(Mensaje, {
+  foreignKey: 'productoId',
+  as: 'mensajes'
+});
+
+// Mensaje.js
+Mensaje.belongsTo(Producto, {
+  foreignKey: 'productoId',
+  as: 'producto'
+});
 
 
 export{

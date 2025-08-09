@@ -29,7 +29,17 @@ function Mensajes() {
       loadInfo()
     },[id])
 
-    
+    const primeraImagen=(productoId)=>{
+
+      const imgs=imagenes.filter((imagen)=>{
+        if(imagen.productoId===productoId){
+          return imagen
+        }
+      })
+
+        return `http://localhost:4000/uploads/${imgs[0].nombre}`
+    }
+
 
   return (
    <>
@@ -46,11 +56,9 @@ function Mensajes() {
                   </div>
                   <div className={style.parte2}>
                   <h4>Enviado: <strong>{format(parseISO(mensaje.updatedAt),"dd 'de' MMMM 'del' yyyy pp",{locale:es})}</strong></h4>
-                  <div className={style.imagen}>
-                    { 
-                     
-                    }
-                  </div>
+                   <div className={style.imagen}>
+                        <img src={primeraImagen(mensaje.producto.id)}/>
+                    </div>  
                   <p>{mensaje.producto.nombre}</p>
                   </div>
                 </div>
@@ -63,6 +71,10 @@ function Mensajes() {
 }
 
 /*
+
+<div className={style.imagen}>
+                    
+                  </div>
    
             <div className={style.contenedorMensajes} key={index}>
               <div className={style.parte1}>

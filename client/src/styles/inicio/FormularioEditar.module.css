@@ -1,0 +1,73 @@
+.producto{
+    width: 100%;
+    min-height: 50vh;   
+    display: flex;
+    gap: 0.3rem;
+}
+
+.carrusel{
+    width: 50%;
+    max-height: 50vh;
+}
+
+.contenedorCarrusel{
+    width: 100%;
+    max-height: 50vh;
+}
+
+.imagen{
+    width: 100%;
+    max-height: 50vh;
+}
+
+.imagen img{
+    width: 100%;
+    max-height: 50vh;
+}
+
+.inf{
+    width: 50%;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.informacion{
+    width: 100%;
+    min-height: 35vh;
+    padding: 0.85rem;
+}
+
+.informacion p{
+    font-size: 0.85rem;
+}
+
+.botones{
+    width: 100%;
+    min-height: 15vh;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.botones button{
+    width: 25%;
+    min-height: 7vh;
+    color: white;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border: none;
+}
+
+.botones button:nth-child(1){
+    background: rgb(99, 13, 13);
+}
+
+.botones button:nth-child(2){
+    background: rgb(17, 17, 102);
+}
+
+.botones button:nth-child(3){
+    background: rgb(182, 185, 4);
+}

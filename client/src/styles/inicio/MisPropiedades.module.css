@@ -1,0 +1,15 @@
+.contenedor{
+    width: 90%;
+    min-height: 100vh;
+    margin: 0 auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/*
+Producto
+*/
+

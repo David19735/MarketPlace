@@ -4,6 +4,7 @@ import postRoutes from './routes/postRoutes.js';
 import inicioRoutes from './routes/inicioRoutes.js'
 import publicacionesRoutes from './routes/publicacionesRoutes.js';
 import mensajesRoutes from './routes/mensajesRoutes.js';
+import miPerfilRoutes from './routes/miPerfilRoutes.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import csrf from 'csurf';
@@ -59,6 +60,7 @@ app.use('/post',postRoutes);
 app.use('/inicio',inicioRoutes);
 app.use('/publicaciones',publicacionesRoutes);
 app.use('/mensajes',mensajesRoutes);
+app.use('/mi-perfil',miPerfilRoutes);
 
 app.listen(port,()=>{
     console.log("Servidor funcionando en el puerto "+port);

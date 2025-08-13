@@ -62,7 +62,7 @@ const sesion=async()=>{
             <Link href={'/registro'}>Registro</Link>
             <Link href={`/mensajes${usuario?.id ? `/${usuario.id}` : ''}`}>Mensajes</Link>
             <Link href={'/post'}>Publicar</Link>
-            <Link href={'/perfil'}>Mis propiedades</Link>
+            <Link href={`/mis-propiedades${usuario?.id ? `/${usuario.id}`: '' }`}>Mis propiedades</Link>
           </div>
           <div className={style.boton}>
               <button

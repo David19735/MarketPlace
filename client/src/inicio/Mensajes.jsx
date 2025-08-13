@@ -43,7 +43,7 @@ function Mensajes() {
 
   return (
    <>
-
+    <Header/>
     <div className={style.contenedor}>
           {
             mensajes.map((mensaje,index)=>{

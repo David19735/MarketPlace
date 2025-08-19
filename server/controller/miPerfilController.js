@@ -1,4 +1,4 @@
-import {Producto,Imagen} from '../models/index.js'
+import {Producto,Imagen,Categoria,Trato,Precio} from '../models/index.js'
 
 const MiPerfil=async(req,res)=>{
 
@@ -38,11 +38,45 @@ const EliminarProducto=async(req,res)=>{
     if(!productoAeliminar){
         return({mensajes:['El producto que intentas eliminar no existe','Verifica el producto a eliminar'],tipo:'error1'})
     }
-
-    
+    await productoAeliminar.destroy()
 
     return res.json({msg:'Contectado'})
 }
 
 
-export{MiPerfil,Eliminar,EliminarProducto}
+const EditarPublicado=async(req,res)=>{
+
+    const {id}=req.body;
+
+    const producto=await Producto.findByPk(id)
+    if(!producto){
+        return res.json({msg:'El producto no existe',tipo:'error'})
+    }
+
+    producto.publicado=!producto.publicado;
+    producto.save();
+    
+    return res.json({msg:'Cambiando publicado',tipo:'exito'})
+}
+
+
+const EdicionProducto=async(req,res)=>{
+
+    const {id}=await req.params;
+    console.log(id);
+
+    const productoAeditar=await Producto.findByPk(id);
+    
+    if(!productoAeditar){
+        return res.json({producto:null})
+    }
+
+    const categorias=await Categoria.findAll();
+    const precios=await Precio.findAll()
+    const tratos=await Trato.findAll();
+
+    return res.json({msg:'Contectado al back con id: '+id,producto:productoAeditar,categorias,precios,tratos})
+}
+
+
+export{MiPerfil,Eliminar,EliminarProducto,EditarPublicado,EdicionProducto}

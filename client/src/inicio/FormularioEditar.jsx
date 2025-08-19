@@ -6,12 +6,18 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
+import MensajeRespuesta from '@/components/MensajeRespuesta';
+import { useRouter } from 'next/navigation';
 
 
-function FormularioEditar({prod}) {
+function FormularioEditar({prod,aceptar,setAceptar,mostrarMensaje,setMostrarMensaje}) {
 
   const imagenes=prod.imagenes;
   const [csrfToken,setCsrfToken]=useState('');
+  const [datoPublicado,setDatoPublicado]=useState()
+  const [tipo,setTipo]=useState('')
+
+  const router=useRouter();
 
   useEffect(()=>{
     const loadToken=async()=>{
@@ -27,6 +33,8 @@ function FormularioEditar({prod}) {
 
 
   const eliminar=async(id)=>{
+      const seguro = window.confirm("¿Estás seguro de eliminar este producto?");
+      if (!seguro) return; // si el usuario cancela, no hace nada
 
     const res=await fetch('http://localhost:4000/mi-perfil/eliminar',{
       method:'DELETE',
@@ -38,18 +46,35 @@ function FormularioEditar({prod}) {
       credentials:'include'
     })
     const data=await res.json();
-    console.log(data);
+    window.location.reload();
   }
 
-  const editar=()=>{
-
+  const editar=(id)=>{
+    
+    router.push(`/post/${id}`)
   }
 
-  const publicado=()=>{
+  const publicado=async(id)=>{
 
+    const res=await fetch('http://localhost:4000/mi-perfil/editar',{
+      method:'PATCH',
+      headers:{
+        'Content-Type':'application/json',
+        'X-CSRF-Token':csrfToken
+      },
+      body:JSON.stringify({id}),
+      credentials:'include'
+    })
+    const data=await res.json();
+    setTipo(data.tipo)
+
+    if(data.tipo==='exito'){
+      window.location.reload();
+    }
   }
 
   return (
+    <>
     <div className={style.producto}>
         <div className={style.carrusel}>
           <Swiper
@@ -84,11 +109,21 @@ function FormularioEditar({prod}) {
                     <button
                     onClick={()=>eliminar(prod.id)}
                     >Eliminar</button>
-                    <button>Editar</button>
-                    <button>Publicado</button>
+                    <button
+                    onClick={()=>{editar(prod.id)}}
+                    >Editar</button>
+                    <button onClick={()=>publicado(prod.id)} style={{
+                      background: prod.publicado ? '#E33614':'#22c55e'
+                    }}>{
+                        prod.publicado===true ?
+                        'No publicar'
+                        :
+                        'Publicar'
+                      }</button>
                 </div>
         </div>
     </div>
+    </> 
   )
 }
 

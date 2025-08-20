@@ -1,4 +1,4 @@
-import {Producto,Imagen,Categoria,Trato,Precio} from '../models/index.js'
+import {Producto,Imagen,Categoria,Trato,Precio, Mensaje} from '../models/index.js'
 
 const MiPerfil=async(req,res)=>{
 
@@ -38,6 +38,8 @@ const EliminarProducto=async(req,res)=>{
     if(!productoAeliminar){
         return({mensajes:['El producto que intentas eliminar no existe','Verifica el producto a eliminar'],tipo:'error1'})
     }
+    await Mensaje.destroy({where:{productoId:id}})
+    await Imagen.destroy({where:{productoId:id}})
     await productoAeliminar.destroy()
 
     return res.json({msg:'Contectado'})
@@ -75,8 +77,37 @@ const EdicionProducto=async(req,res)=>{
     const precios=await Precio.findAll()
     const tratos=await Trato.findAll();
 
-    return res.json({msg:'Contectado al back con id: '+id,producto:productoAeditar,categorias,precios,tratos})
+    return res.json({msg:'Contectado al back con id: '+id,producto:productoAeditar,categorias,precios,tratos,csrfToken:req.csrfToken()})
 }
 
 
-export{MiPerfil,Eliminar,EliminarProducto,EditarPublicado,EdicionProducto}
+const FormularioEdicionProducto=async(req,res)=>{
+
+    const {id}=req.params;
+    const {nombre,categoriaId,precioId,tratoId,descripcion,domicilio,lat,lng}=req.body;
+    
+    const producto=await Producto.findByPk(id);
+    if(!producto){
+        return res.json({msg:'El producto no existe',tipo:'error'})
+    }
+
+    console.log(nombre,categoriaId,precioId,tratoId,descripcion,domicilio,lat,lng);
+
+   
+    producto.nombre=nombre;
+    producto.descripcion=descripcion;
+    producto.domicilio=domicilio;
+    producto.categoriaId=categoriaId;
+    producto.precioId=precioId;
+    producto.tratoId=tratoId;
+    producto.lat=lat;
+    producto.lng=lng;
+    await producto.save();
+   
+
+
+    return res.json({msg:'Producto actualizado',tipo:'exito'})
+
+}
+
+export{MiPerfil,Eliminar,EliminarProducto,EditarPublicado,EdicionProducto,FormularioEdicionProducto}

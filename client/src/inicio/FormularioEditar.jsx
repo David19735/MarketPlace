@@ -46,6 +46,7 @@ function FormularioEditar({prod,aceptar,setAceptar,mostrarMensaje,setMostrarMens
       credentials:'include'
     })
     const data=await res.json();
+    
     window.location.reload();
   }
 

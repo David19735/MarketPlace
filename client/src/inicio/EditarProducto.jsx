@@ -3,11 +3,14 @@ import React, { useEffect,useState } from 'react'
 import style from '@/styles/inicio/EditarProducto.module.css';
 import Header from './Header';
 import EdicionMapa from '@/edicion/EdicionMapa';
+import { useRouter } from 'next/navigation';
 
 //
 import { set } from 'date-fns';
 
 function EditarProducto({id}) {
+
+    const router=useRouter();
 
         const [calle,setCalle]=useState('');
         const [lat,setLat]=useState('');
@@ -16,6 +19,7 @@ function EditarProducto({id}) {
         const [precios,setPrecios]=useState([])
         const [tratos,setTratos]=useState([])
         const [csrfToken,setCsrfToken]=useState('');
+        const [user,setUser]=useState('');
         
       //Datos a enviar al backend
     
@@ -48,13 +52,27 @@ function EditarProducto({id}) {
             setDomicilio(data.producto.domicilio);
             setLat(data.producto.lat);
             setLng(data.producto.lng);
+            setCsrfToken(data.csrfToken);
+            setUser(data.producto.usuarioId);
             console.log(data);
         }
         loadInf();
     },[])
 
+     const handleChage=(e)=>{
 
-    const handleSubmit=(e)=>{
+        switch(e.target.name){
+        case 'precio':setPrecioId(e.target.value);
+        break;
+        case 'trato':setTratoId(e.target.value);
+        break;
+        case 'descripcion':setDescripcion(e.target.value)
+        break;
+      }
+
+    }
+
+    const handleSubmit=async(e)=>{
       e.preventDefault();
 
       if(precioId===''||tratoId===''||descripcion===''||domicilio===''||lat===''||lng===''){
@@ -65,23 +83,21 @@ function EditarProducto({id}) {
       const latInput=document.getElementById('lat')?.value;
       const lngInput=document.getElementById('lng')?.value;
 
-      const datos={nombre,categoriaId,precioId,tratoId,descripcion,calleInput,latInput,lngInput}
-      console.log(datos);
-    }
-
-
-    const handleChage=(e)=>{
-        switch(e.target.name){
-        case 'precio':setPrecioId(e.target.name);
-        break;
-
-        case 'trato':setTratoId(e.target.name);
-        break;
-
-        case 'descripcion':setDescripcion(e.target.name);
-        break;
+      const datos={nombre,categoriaId,precioId,tratoId,descripcion,domicilio:calleInput,lat:latInput,lng:lngInput}
+      
+      const res=await fetch(`http://localhost:4000/mi-perfil/edicion/${id}`,{
+        method:'PUT',
+        headers:{
+          'Content-Type':'application/JSON',
+          'X-CSRF-Token':csrfToken
+        },
+        body:JSON.stringify(datos),
+        credentials:'include'
+      })
+      const data=await res.json();
+      if(data.tipo==='exito'){
+          router.push(`/mis-propiedades/${user}`)
       }
-
     }
 
   return (
@@ -130,7 +146,7 @@ function EditarProducto({id}) {
             {/* Div para inputs pequeños*/}
             <div className={style.input_grande}>
               <label htmlFor="">Descripción</label>
-                <textarea name="descripcion" id="" placeholder='Escribe una descripción de mínimo 20 palabras de tu producto' value={descripcion} onChange={handleChage}/>
+                <textarea name="descripcion" id="descripcion" placeholder='Escribe una descripción de mínimo 20 palabras de tu producto' value={descripcion} onChange={handleChage}/>
             </div>
 
             <div className={style.mapa}>

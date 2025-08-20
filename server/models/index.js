@@ -24,6 +24,7 @@ Imagen.belongsTo(Producto, {
 Usuario.hasMany(Mensaje, {
   foreignKey: 'usuarioId',
   as: 'mensajesEnviados',
+  onDelete: 'CASCADE'
 });
 
 Mensaje.belongsTo(Usuario, {
